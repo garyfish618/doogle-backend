@@ -11,7 +11,7 @@ class SearchWordsController < ApplicationController
             res = Net::HTTP.start(url.host, url.port, use_ssl: true) {|http| http.request(req)}
             
             jsonWord = JSON.parse(res.body)
-            if jsonWord[0]['shortdef'] == nil
+            if jsonWord == [] || jsonWord[0]['shortdef'] == nil
                 render json: {:valid => false}
                 return
             end

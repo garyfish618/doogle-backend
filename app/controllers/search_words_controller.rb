@@ -18,11 +18,9 @@ class SearchWordsController < ApplicationController
             
             definition = jsonWord[0]['shortdef'][0]
             
-            
+            @word = SearchWord.create(word: params[:word], definition: definition)
             
         end
-        
-        @word = SearchWord.create(word: params[:word], definition: definition)
         
         render json: {:definition => @word.definition, :valid => true}
     end
